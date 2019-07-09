@@ -78,57 +78,57 @@ output "ecs_task_definition_revision" {
   description = "The revision of the task in a particular family."
 }
 
-output "iam_role_arn" {
-  value       = "${join("", aws_iam_role.default.*.arn)}"
+output "ecs_task_iam_role_arn" {
+  value       = "${join("", aws_iam_role.ecs-task-default.*.arn)}"
   description = "The Amazon Resource Name (ARN) specifying the IAM Role."
 }
 
-output "iam_role_create_date" {
-  value       = "${join("", aws_iam_role.default.*.create_date)}"
+output "ecs_task_iam_role_create_date" {
+  value       = "${join("", aws_iam_role.ecs-task-default.*.create_date)}"
   description = "The creation date of the IAM Role."
 }
 
-output "iam_role_unique_id" {
-  value       = "${join("", aws_iam_role.default.*.unique_id)}"
+output "ecs_task_iam_role_unique_id" {
+  value       = "${join("", aws_iam_role.ecs-task-default.*.unique_id)}"
   description = "The stable and unique string identifying the IAM Role."
 }
 
-output "iam_role_name" {
-  value       = "${join("", aws_iam_role.default.*.name)}"
+output "ecs_task_iam_role_name" {
+  value       = "${join("", aws_iam_role.ecs-task-default.*.name)}"
   description = "The name of the IAM Role."
 }
 
-output "iam_role_description" {
-  value       = "${join("", aws_iam_role.default.*.description)}"
+output "ecs_task_iam_role_description" {
+  value       = "${join("", aws_iam_role.ecs-task-default.*.description)}"
   description = "The description of the IAM Role."
 }
 
-output "iam_policy_id" {
-  value       = "${join("", aws_iam_policy.default.*.id)}"
+output "ecs_task_iam_policy_id" {
+  value       = "${join("", aws_iam_policy.ecs-task-default.*.id)}"
   description = "The IAM Policy's ID."
 }
 
-output "iam_policy_arn" {
-  value       = "${join("", aws_iam_policy.default.*.arn)}"
+output "ecs_task_iam_policy_arn" {
+  value       = "${join("", aws_iam_policy.ecs-task-default.*.arn)}"
   description = "The ARN assigned by AWS to this IAM Policy."
 }
 
-output "iam_policy_description" {
-  value       = "${join("", aws_iam_policy.default.*.description)}"
+output "ecs_task_iam_policy_description" {
+  value       = "${join("", aws_iam_policy.ecs-task-default.*.description)}"
   description = "The description of the IAM Policy."
 }
 
-output "iam_policy_name" {
-  value       = "${join("", aws_iam_policy.default.*.name)}"
+output "ecs_task_iam_policy_name" {
+  value       = "${join("", aws_iam_policy.ecs-task-default.*.name)}"
   description = "The name of the IAM Policy."
 }
 
-output "iam_policy_path" {
-  value       = "${join("", aws_iam_policy.default.*.path)}"
+output "ecs_task_iam_policy_path" {
+  value       = "${join("", aws_iam_policy.ecs-task-default.*.path)}"
   description = "The path of the IAM Policy."
 }
 
-output "iam_policy_document" {
-  value       = "${join("", aws_iam_policy.default.*.policy)}"
+output "ecs_task_iam_policy_document" {
+  value       = "${join("", aws_iam_policy.ecs-task-default.*.policy)}"
   description = "The policy document of the IAM Policy."
 }

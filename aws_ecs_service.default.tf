@@ -1,28 +1,30 @@
 resource "aws_ecs_service" "default" {
-  count = "${var.enabled}"
+  count = var.enabled
 
-  name                               = "${var.name}"
-  task_definition                    = "${aws_ecs_task_definition.default.arn}"
-  cluster                            = "${var.cluster}"
-  desired_count                      = "${var.desired_count}"
-  deployment_maximum_percent         = "${var.deployment_maximum_percent}"
-  deployment_minimum_healthy_percent = "${var.deployment_minimum_healthy_percent}"
+  name                               = var.name
+  task_definition                    = aws_ecs_task_definition.default.0.arn
+  cluster                            = var.cluster
+  desired_count                      = var.desired_count
+  deployment_maximum_percent         = var.deployment_maximum_percent
+  deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
 
   deployment_controller {
-    type = "${var.deployment_controller_type}"
+    type = var.deployment_controller_type
   }
 
   network_configuration {
-    subnets          = ["${var.subnets}"]
-    security_groups  = ["${aws_security_group.default.id}"]
-    assign_public_ip = "${var.assign_public_ip}"
+    subnets          = var.subnets
+    security_groups  = ["${aws_security_group.default.0.id}"]
+    assign_public_ip = var.assign_public_ip
   }
 
-  load_balancer = ["${var.load_balancer}"]
+  load_balancer {
+    container_name = var.lb_container_name
+    container_port = var.lb_container_port
+  }
 
-  health_check_grace_period_seconds = 0
+  health_check_grace_period_seconds = var.health_check_grace_period_seconds
 
-  #health_check_grace_period_seconds = "${var.health_check_grace_period_seconds}"
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
 

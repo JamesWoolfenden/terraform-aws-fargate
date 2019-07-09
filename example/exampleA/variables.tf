@@ -1,13 +1,16 @@
 variable "common_tags" {
-  type = "map"
+  type = map
 }
 
 variable "container_port" {
-  type = "string"
+  type = string
 }
 
-variable "target_group_arn" {}
+variable "target_group_arn" {
+  type = string
+
+}
 
 variable "cluster" {
-  type = "string"
+  type = string
 }

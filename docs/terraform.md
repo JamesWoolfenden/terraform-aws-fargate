@@ -59,4 +59,3 @@
 | security_group_name | The name of the ECS Service security group. |
 | security_group_owner_id | The owner ID of the ECS Service security group. |
 | security_group_vpc_id | The VPC ID of the ECS Service security group. |
-

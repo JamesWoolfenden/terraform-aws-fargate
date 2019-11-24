@@ -23,7 +23,7 @@ module "fargate" {
   cluster               = "arn:aws:ecs:eu-west-1:${data.aws_caller_identity.current.account_id}:cluster/${var.cluster}"
   subnets               = data.aws_subnet_ids.cluster.ids
   target_group_arn      = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/ecsTaskExecutionRole"
-  vpc_id                = "${element(data.aws_vpcs.cluster.ids, 0)}"
+  vpc_id                = element(data.aws_vpcs.cluster.ids, 0)
   family                = "first-run-task-definition"
 }
 ```

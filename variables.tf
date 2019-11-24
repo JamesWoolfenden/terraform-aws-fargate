@@ -3,11 +3,6 @@ variable "name" {
   description = "The name of ecs service."
 }
 
-variable "container_port" {
-  type        = string
-  description = "The port on the container to associate with the load balancer."
-}
-
 variable "cluster" {
   type        = string
   description = "ARN of an ECS cluster."
@@ -26,11 +21,6 @@ variable "target_group_arn" {
 variable "vpc_id" {
   type        = string
   description = "VPC Id to associate with ECS Service."
-}
-
-variable "container_definitions" {
-  type        = string
-  description = "A list of valid container definitions provided as a single valid JSON document."
 }
 
 variable "desired_count" {
@@ -75,24 +65,6 @@ variable "ingress_cidr_blocks" {
   description = "List of Ingress CIDR blocks."
 }
 
-variable "cpu" {
-  default     = "256"
-  type        = string
-  description = "The number of cpu units used by the task."
-}
-
-variable "memory" {
-  default     = "512"
-  type        = string
-  description = "The amount (in MiB) of memory used by the task."
-}
-
-variable "requires_compatibilities" {
-  default     = ["FARGATE"]
-  type        = list
-  description = "A set of launch types required by the task. The valid values are EC2 and FARGATE."
-}
-
 variable "iam_path" {
   default     = "/"
   type        = string
@@ -103,12 +75,6 @@ variable "iam_description" {
   default     = "Managed by Terraform"
   type        = string
   description = "The description of the IAM Role and the IAM Policy."
-}
-
-variable "enabled" {
-  default     = true
-  type        = string
-  description = "Set to false to prevent the module from creating anything."
 }
 
 variable "create_ecs_task_execution_role" {
@@ -128,16 +94,10 @@ variable "common_tags" {
   description = "Implments the common_tags tagging scheme"
 }
 
-variable "family" {
-  type = string
+variable "lb" {
+  type = map
 }
 
-variable "lb_container_name" {
-  type    = string
-  default = ""
-}
 
-variable "lb_container_port" {
-  type    = string
-  default = ""
+variable "task_definition" {
 }

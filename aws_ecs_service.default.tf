@@ -1,8 +1,6 @@
 resource "aws_ecs_service" "default" {
-  count = var.enabled
-
   name                               = var.name
-  task_definition                    = aws_ecs_task_definition.default.0.arn
+  task_definition                    = aws_ecs_task_definition.default.arn
   cluster                            = var.cluster
   desired_count                      = var.desired_count
   deployment_maximum_percent         = var.deployment_maximum_percent
@@ -14,13 +12,13 @@ resource "aws_ecs_service" "default" {
 
   network_configuration {
     subnets          = var.subnets
-    security_groups  = ["${aws_security_group.default.0.id}"]
+    security_groups  = [aws_security_group.default.id]
     assign_public_ip = var.assign_public_ip
   }
 
   load_balancer {
-    container_name = var.lb_container_name
-    container_port = var.lb_container_port
+    container_name = var.lb["container_name"]
+    container_port = var.lb["container_port"]
   }
 
   health_check_grace_period_seconds = var.health_check_grace_period_seconds
@@ -32,5 +30,5 @@ resource "aws_ecs_service" "default" {
     ignore_changes = ["desired_count"]
   }
 
-  tags = "${var.common_tags}"
+  tags = var.common_tags
 }

@@ -14,17 +14,16 @@ Include this repository as a module in your existing terraform code:
 
 ```hcl
 module "fargate" {
-  source                = "JamesWoolfenden/fargate/aws"
-  version               = "0.1.1"
-  common_tags           = var.common_tags
-  container_definitions = "[{\"command\":[\"/bin/sh -c \\\"echo '<html> <head> <title>Amazon ECS Sample App</title> <style>body {margin-top: 40px; background-color: #333;} </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now running on a container in Amazon ECS.</p> </div></body></html>' >  /usr/local/apache2/htdocs/index.html && httpd-foreground\\\"\"],\"cpu\":256,\"entryPoint\":[\"sh\",\"-c\"],\"environment\":[],\"essential\":true,\"image\":\"httpd:2.4\",\"links\":[],\"logConfiguration\":{\"logDriver\":\"awslogs\",\"options\":{\"awslogs-group\":\"/ecs/first-run-task-definition\",\"awslogs-region\":\"eu-west-1\",\"awslogs-stream-prefix\":\"ecs\"}},\"memoryReservation\":512,\"mountPoints\":[],\"name\":\"sample-app\",\"portMappings\":[{\"containerPort\":80,\"hostPort\":80,\"protocol\":\"tcp\"}],\"volumesFrom\":[]}]"
-  name                  = "my-first-service"
-  container_port        = var.container_port
-  cluster               = "arn:aws:ecs:eu-west-1:${data.aws_caller_identity.current.account_id}:cluster/${var.cluster}"
-  subnets               = data.aws_subnet_ids.cluster.ids
-  target_group_arn      = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/ecsTaskExecutionRole"
-  vpc_id                = element(data.aws_vpcs.cluster.ids, 0)
-  family                = "first-run-task-definition"
+  source           = "JamesWoolfenden/fargate/aws"
+  version          = "0.1.1"
+  common_tags      = var.common_tags
+  task_definition  = var.task_definition
+  name             = "my-first-service"
+  lb               = var.lb
+  cluster          = "arn:aws:ecs:eu-west-1:${data.aws_caller_identity.current.account_id}:cluster/${var.cluster}"
+  subnets          = data.aws_subnet_ids.cluster.ids
+  target_group_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.target_group_arn}"
+  vpc_id           = element(data.aws_vpcs.cluster.ids, 0)
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -34,7 +33,7 @@ module "fargate" {
 |------|-------------|:----:|:-----:|:-----:|
 | assign\_public\_ip | Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false. | string | `"false"` | no |
 | cluster | ARN of an ECS cluster. | string | n/a | yes |
-| common\_tags | Implments the common_tags tagging scheme | map | n/a | yes |
+| common\_tags | Implements the common_tags tagging scheme | map | n/a | yes |
 | create\_ecs\_task\_execution\_role | Specify true to indicate that ECS Task Execution IAM Role creation. | string | `"true"` | no |
 | deployment\_controller\_type | Type of deployment controller. Valid values: CODE_DEPLOY, ECS. | string | `"ECS"` | no |
 | deployment\_maximum\_percent | The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. | string | `"200"` | no |

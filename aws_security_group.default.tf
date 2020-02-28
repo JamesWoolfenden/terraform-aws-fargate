@@ -6,6 +6,7 @@ resource "aws_security_group" "default" {
 }
 
 resource "aws_security_group_rule" "ingress" {
+  description       = "Ingress rule"
   type              = "ingress"
   from_port         = var.lb["container_port"]
   to_port           = var.lb["container_port"]
@@ -15,6 +16,7 @@ resource "aws_security_group_rule" "ingress" {
 }
 
 resource "aws_security_group_rule" "egress" {
+  description       = "Egress rule"
   type              = "egress"
   from_port         = 0
   to_port           = 0

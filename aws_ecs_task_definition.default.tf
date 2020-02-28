@@ -1,6 +1,6 @@
 resource "aws_ecs_task_definition" "default" {
   family                   = var.task_definition["family"]
-  execution_role_arn       = "${var.create_ecs_task_execution_role ? join("", aws_iam_role.ecs-task-default.arn) : var.ecs_task_execution_role_arn}"
+  execution_role_arn       = var.create_ecs_task_execution_role ? join("", aws_iam_role.ecs-task-default.arn) : var.ecs_task_execution_role_arn
   container_definitions    = var.task_definition["container_definitions"]
   cpu                      = var.task_definition["cpu"]
   memory                   = var.task_definition["memory"]

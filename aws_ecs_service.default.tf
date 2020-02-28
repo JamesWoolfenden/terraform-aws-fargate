@@ -27,7 +27,7 @@ resource "aws_ecs_service" "default" {
   scheduling_strategy = "REPLICA"
 
   lifecycle {
-    ignore_changes = ["desired_count"]
+    ignore_changes = [desired_count]
   }
 
   tags = var.common_tags

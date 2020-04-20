@@ -1,5 +1,5 @@
 resource "aws_iam_policy" "ecs-task-default" {
-  name        = "${var.name}-ecs-task-execution"
+  name        = "${var.service_name}-ecs-task-execution"
   path        = var.iam_path
   description = var.iam_description
 

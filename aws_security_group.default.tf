@@ -1,5 +1,5 @@
 resource "aws_security_group" "default" {
-  name        = "${var.name}-ecs-fargate"
+  name        = "${var.service_name}-ecs-fargate"
   description = "ECS Allowed Ports"
   vpc_id      = var.vpc_id
   tags        = var.common_tags

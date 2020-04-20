@@ -1,11 +1,6 @@
-variable "name" {
+variable "service_name" {
   type        = string
   description = "The name of ecs service."
-}
-
-variable "cluster" {
-  type        = string
-  description = "ARN of an ECS cluster."
 }
 
 variable "subnets" {
@@ -100,4 +95,9 @@ variable "lb" {
 
 
 variable "task_definition" {
+}
+
+
+variable "cluster_name" {
+  default = "my-first-cluster"
 }

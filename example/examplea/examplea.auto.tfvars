@@ -4,7 +4,6 @@ common_tags = {
   Name        = "ECS default - ECS SecurityGroup"
 }
 
-cluster          = "test"
 target_group_arn = "ecsTaskExecutionRole"
 
 lb = {

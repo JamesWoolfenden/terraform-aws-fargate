@@ -43,7 +43,7 @@ module "fargate" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | assign\_public\_ip | Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false. | `string` | `false` | no |
-| cluster | ARN of an ECS cluster. | `string` | n/a | yes |
+| cluster\_name | n/a | `string` | `"my-first-cluster"` | no |
 | common\_tags | Implments the common\_tags tagging scheme | `map` | n/a | yes |
 | create\_ecs\_task\_execution\_role | Specify true to indicate that ECS Task Execution IAM Role creation. | `string` | `true` | no |
 | deployment\_controller\_type | Type of deployment controller. Valid values: CODE\_DEPLOY, ECS. | `string` | `"ECS"` | no |
@@ -54,9 +54,9 @@ module "fargate" {
 | health\_check\_grace\_period\_seconds | Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 7200. | `string` | `60` | no |
 | iam\_description | The description of the IAM Role and the IAM Policy. | `string` | `"Managed by Terraform"` | no |
 | iam\_path | Path in which to create the IAM Role and the IAM Policy. | `string` | `"/"` | no |
-| ingress\_cidr\_blocks | List of Ingress CIDR blocks. | `list` | <pre>[<br>  "0.0.0.0/0"<br>]<br></pre> | no |
+| ingress\_cidr\_blocks | List of Ingress CIDR blocks. | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | lb | n/a | `map` | n/a | yes |
-| name | The name of ecs service. | `string` | n/a | yes |
+| service\_name | The name of ecs service. | `string` | n/a | yes |
 | subnets | The subnets associated with the task or service. | `list` | n/a | yes |
 | target\_group\_arn | The ARN of the Load Balancer target group to associate with the service. | `string` | n/a | yes |
 | task\_definition | n/a | `any` | n/a | yes |

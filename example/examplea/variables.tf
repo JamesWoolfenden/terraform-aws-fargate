@@ -12,3 +12,8 @@ variable "lb" {
 
 variable "task_definition" {
 }
+
+variable "desired_count" {
+  type        = string
+  description = "The number of instances of the task definition to place and keep running."
+}

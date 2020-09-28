@@ -31,7 +31,6 @@ module "fargate" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Requirements
 
 No requirements.
@@ -39,42 +38,42 @@ No requirements.
 ## Providers
 
 | Name | Version |
-| ---- | ------- |
-| aws  | n/a     |
+|------|---------|
+| aws | n/a |
 
 ## Inputs
 
-| Name                               | Description                                                                                                                                                           | Type     | Default                           | Required |
-| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------- | :------: |
-| assign_public_ip                   | Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false.                                                                     | `string` | `false`                           |    no    |
-| cluster_name                       | n/a                                                                                                                                                                   | `string` | `"my-first-cluster"`              |    no    |
-| common_tags                        | Implments the common_tags tagging scheme                                                                                                                              | `map`    | n/a                               |   yes    |
-| create_ecs_task_execution_role     | Specify true to indicate that ECS Task Execution IAM Role creation.                                                                                                   | `string` | `true`                            |    no    |
-| deployment_controller_type         | Type of deployment controller. Valid values: CODE_DEPLOY, ECS.                                                                                                        | `string` | `"ECS"`                           |    no    |
-| deployment_maximum_percent         | The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment.                  | `string` | `200`                             |    no    |
-| deployment_minimum_healthy_percent | The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment. | `string` | `100`                             |    no    |
-| desired_count                      | The number of instances of the task definition to place and keep running.                                                                                             | `string` | `0`                               |    no    |
-| ecs_task_execution_role_arn        | The ARN of the ECS Task Execution IAM Role.                                                                                                                           | `string` | `""`                              |    no    |
-| health_check_grace_period_seconds  | Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 7200.                                          | `string` | `60`                              |    no    |
-| iam_description                    | The description of the IAM Role and the IAM Policy.                                                                                                                   | `string` | `"Managed by Terraform"`          |    no    |
-| iam_path                           | Path in which to create the IAM Role and the IAM Policy.                                                                                                              | `string` | `"/"`                             |    no    |
-| ingress_cidr_blocks                | List of Ingress CIDR blocks.                                                                                                                                          | `list`   | <pre>[<br> "0.0.0.0/0"<br>]</pre> |    no    |
-| lb                                 | n/a                                                                                                                                                                   | `map`    | n/a                               |   yes    |
-| service_name                       | The name of ecs service.                                                                                                                                              | `string` | n/a                               |   yes    |
-| subnets                            | The subnets associated with the task or service.                                                                                                                      | `list`   | n/a                               |   yes    |
-| target_group_arn                   | The ARN of the Load Balancer target group to associate with the service.                                                                                              | `string` | n/a                               |   yes    |
-| task_definition                    | n/a                                                                                                                                                                   | `any`    | n/a                               |   yes    |
-| vpc_id                             | VPC Id to associate with ECS Service.                                                                                                                                 | `string` | n/a                               |   yes    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| assign\_public\_ip | Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false. | `string` | `false` | no |
+| cluster\_name | n/a | `string` | `"my-first-cluster"` | no |
+| common\_tags | Implments the common\_tags tagging scheme | `map` | n/a | yes |
+| create\_ecs\_task\_execution\_role | Specify true to indicate that ECS Task Execution IAM Role creation. | `string` | `true` | no |
+| deployment\_controller\_type | Type of deployment controller. Valid values: CODE\_DEPLOY, ECS. | `string` | `"ECS"` | no |
+| deployment\_maximum\_percent | The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. | `string` | `200` | no |
+| deployment\_minimum\_healthy\_percent | The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment. | `string` | `100` | no |
+| desired\_count | The number of instances of the task definition to place and keep running. | `string` | `0` | no |
+| ecs\_task\_execution\_role\_arn | The ARN of the ECS Task Execution IAM Role. | `string` | `""` | no |
+| health\_check\_grace\_period\_seconds | Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 7200. | `string` | `60` | no |
+| iam\_description | The description of the IAM Role and the IAM Policy. | `string` | `"Managed by Terraform"` | no |
+| iam\_path | Path in which to create the IAM Role and the IAM Policy. | `string` | `"/"` | no |
+| ingress\_cidr\_blocks | List of Ingress CIDR blocks. | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| lb | n/a | `map` | n/a | yes |
+| service\_name | The name of ecs service. | `string` | n/a | yes |
+| subnets | The subnets associated with the task or service. | `list` | n/a | yes |
+| target\_group\_arn | The ARN of the Load Balancer target group to associate with the service. | `string` | n/a | yes |
+| task\_definition | n/a | `any` | n/a | yes |
+| vpc\_id | VPC Id to associate with ECS Service. | `string` | n/a | yes |
 
 ## Outputs
 
-| Name                   | Description                                                    |
-| ---------------------- | -------------------------------------------------------------- |
-| ecs_service            | The ECS service.                                               |
-| ecs_task_definition    | The Full Task Definition (including both family and revision). |
-| ecs_task_policy        | n/a                                                            |
-| iam_role               | n/a                                                            |
-| security_group_default | The ECS Service security group.                                |
+| Name | Description |
+|------|-------------|
+| ecs\_service | The ECS service. |
+| ecs\_task\_definition | The Full Task Definition (including both family and revision). |
+| ecs\_task\_policy | n/a |
+| iam\_role | n/a |
+| security\_group\_default | The ECS Service security group. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

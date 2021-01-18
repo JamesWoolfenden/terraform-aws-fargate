@@ -6,11 +6,11 @@
 .terraform
 .idea
 *.iml
-.build-harness
-build-harness
 *.ini
 
 *~HEAD
 *backup
 *.zip
 *.orig
+.terraform.tfstate.lock.info
+.terraform.lock.hcl

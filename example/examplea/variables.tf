@@ -1,5 +1,5 @@
 variable "common_tags" {
-  type = map
+  type = map(any)
 }
 
 variable "target_group_arn" {
@@ -7,7 +7,7 @@ variable "target_group_arn" {
 }
 
 variable "lb" {
-  type = map
+  type = map(any)
 }
 
 variable "task_definition" {

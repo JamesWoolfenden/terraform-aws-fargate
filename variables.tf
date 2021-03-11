@@ -4,7 +4,7 @@ variable "service_name" {
 }
 
 variable "subnets" {
-  type        = list
+  type        = list(any)
   description = "The subnets associated with the task or service."
 }
 
@@ -56,7 +56,7 @@ variable "health_check_grace_period_seconds" {
 
 variable "ingress_cidr_blocks" {
   default     = ["0.0.0.0/0"]
-  type        = list
+  type        = list(any)
   description = "List of Ingress CIDR blocks."
 }
 
@@ -85,12 +85,12 @@ variable "ecs_task_execution_role_arn" {
 }
 
 variable "common_tags" {
-  type        = map
+  type        = map(any)
   description = "Implments the common_tags tagging scheme"
 }
 
 variable "lb" {
-  type = map
+  type = map(any)
 }
 
 

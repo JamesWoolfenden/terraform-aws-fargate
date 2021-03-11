@@ -45,13 +45,32 @@ No requirements.
 |------|---------|
 | aws | n/a |
 
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_ecs_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_cluster) |
+| [aws_ecs_service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_service) |
+| [aws_ecs_task_definition](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition) |
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy) |
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
+| [aws_security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) |
+| [aws_security_group_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | assign\_public\_ip | Assign a public IP address to the ENI (Fargate launch type only). Valid values are true or false. | `string` | `false` | no |
 | cluster\_name | n/a | `string` | `"my-first-cluster"` | no |
-| common\_tags | Implments the common\_tags tagging scheme | `map` | n/a | yes |
+| common\_tags | Implments the common\_tags tagging scheme | `map(any)` | n/a | yes |
 | create\_ecs\_task\_execution\_role | Specify true to indicate that ECS Task Execution IAM Role creation. | `string` | `true` | no |
 | deployment\_controller\_type | Type of deployment controller. Valid values: CODE\_DEPLOY, ECS. | `string` | `"ECS"` | no |
 | deployment\_maximum\_percent | The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. | `string` | `200` | no |
@@ -61,10 +80,10 @@ No requirements.
 | health\_check\_grace\_period\_seconds | Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 7200. | `string` | `60` | no |
 | iam\_description | The description of the IAM Role and the IAM Policy. | `string` | `"Managed by Terraform"` | no |
 | iam\_path | Path in which to create the IAM Role and the IAM Policy. | `string` | `"/"` | no |
-| ingress\_cidr\_blocks | List of Ingress CIDR blocks. | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
-| lb | n/a | `map` | n/a | yes |
+| ingress\_cidr\_blocks | List of Ingress CIDR blocks. | `list(any)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| lb | n/a | `map(any)` | n/a | yes |
 | service\_name | The name of ecs service. | `string` | n/a | yes |
-| subnets | The subnets associated with the task or service. | `list` | n/a | yes |
+| subnets | The subnets associated with the task or service. | `list(any)` | n/a | yes |
 | target\_group\_arn | The ARN of the Load Balancer target group to associate with the service. | `string` | n/a | yes |
 | task\_definition | n/a | `any` | n/a | yes |
 | vpc\_id | VPC Id to associate with ECS Service. | `string` | n/a | yes |
@@ -78,7 +97,6 @@ No requirements.
 | ecs\_task\_policy | n/a |
 | iam\_role | n/a |
 | security\_group\_default | The ECS Service security group. |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Related Projects

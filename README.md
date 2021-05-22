@@ -34,6 +34,23 @@ module "fargate" {
 }
 ```
 
+## Costs
+
+```text
+Monthly cost estimate
+
+Project: .
+
+ Name                                    Monthly Qty  Unit       Monthly Cost
+
+ module.fargate.aws_ecs_service.default
+ ├─ Per GB per hour                              365  GB-hours          $1.87
+ └─ Per vCPU per hour                          182.5  CPU-hours         $8.50
+
+ PROJECT TOTAL                                                         $10.36
+
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 

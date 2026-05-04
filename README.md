@@ -145,11 +145,14 @@ resource "aws_iam_policy" "terraform_pike" {
                 "ec2:DeleteTags",
                 "ec2:DescribeAccountAttributes",
                 "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeSecurityGroupRules",
                 "ec2:DescribeSecurityGroups",
                 "ec2:RevokeSecurityGroupEgress",
                 "ec2:RevokeSecurityGroupIngress"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor1",
@@ -163,13 +166,19 @@ resource "aws_iam_policy" "terraform_pike" {
                 "ecs:DescribeClusters",
                 "ecs:DescribeServices",
                 "ecs:DescribeTaskDefinition",
-                "ecs:ModifyCluster",
+                "ecs:ListTagsForResource",
+                "ecs:PutAccountSetting",
+                "ecs:PutAccountSettingDefault",
+                "ecs:PutClusterCapacityProviders",
                 "ecs:RegisterTaskDefinition",
                 "ecs:TagResource",
                 "ecs:UntagResource",
+                "ecs:UpdateCluster",
                 "ecs:UpdateService"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor2",
@@ -178,6 +187,7 @@ resource "aws_iam_policy" "terraform_pike" {
                 "iam:AttachRolePolicy",
                 "iam:CreatePolicy",
                 "iam:CreateRole",
+                "iam:CreateServiceLinkedRole",
                 "iam:DeletePolicy",
                 "iam:DeleteRole",
                 "iam:DetachRolePolicy",
@@ -191,9 +201,12 @@ resource "aws_iam_policy" "terraform_pike" {
                 "iam:ListRolePolicies",
                 "iam:PassRole",
                 "iam:TagRole",
+                "iam:UntagRole",
                 "iam:UpdateRoleDescription"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         }
     ]
 })
